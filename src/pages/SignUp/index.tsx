@@ -62,7 +62,7 @@ const SignUp: React.FunctionComponent = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-gray-100">
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-amber-50">
     <form
       onSubmit={handleSubmit}
       className="w-full max-w-md p-6 bg-white shadow-md rounded-lg"
