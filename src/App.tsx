@@ -3,9 +3,9 @@ import { router } from "./routes";
 import UserAuthProvider from "./context/UserAuthContext";
 import "./App.css";
 
-interface IApp {}
+// interface IApp {}
 
-const App: React.FunctionComponent<IApp> = () => {
+const App: React.FunctionComponent = () => {
   return (
     <UserAuthProvider>
       <RouterProvider router={router} />

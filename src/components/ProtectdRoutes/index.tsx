@@ -1,11 +1,10 @@
 import { Navigate, useLocation, Outlet } from "react-router-dom";
-import { useUserAuth } from "../../context/UserAuthContext";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
 
-interface IProtectedRoutesProps {}
+// interface IProtectedRoutesProps {}<IProtectedRoutesProps>
 
-const ProtectedRoutes: React.FunctionComponent<IProtectedRoutesProps> = () => {
+const ProtectedRoutes: React.FunctionComponent = () => {
   const auth = getAuth();
   const [user, loading] = useAuthState(auth);
   const location = useLocation();
@@ -13,7 +12,7 @@ const ProtectedRoutes: React.FunctionComponent<IProtectedRoutesProps> = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  
+
   return user ? (
     <Outlet />
   ) : (

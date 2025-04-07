@@ -54,24 +54,24 @@ const UserAuthProvider: React.FunctionComponent<IUserAuthProviderProps> = ({
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log(`The Logged user state is: ${user}`);
-        setUser(user);
-      }
-      return () => {
-        unsubscribe();
-      };
+      console.log(`The Logged user state is: ${user}`);
+      setUser(user);
     });
+    return () => {
+      unsubscribe();
+    };
   }, []);
-  const value: AuthContextData = {
-    user,
-    logIn,
-    signUp,
-    logOut,
-    googleSignIn,
-  };
+
   return (
-    <UserAuthContext.Provider value={value}>
+    <UserAuthContext.Provider
+      value={{
+        user,
+        logIn,
+        signUp,
+        logOut,
+        googleSignIn,
+      }}
+    >
       {children}
     </UserAuthContext.Provider>
   );
