@@ -7,6 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Node modules and build
 node_modules
 dist
 dist-ssr
@@ -22,5 +23,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables
 .env
 
+# Firebase local config
+.firebase/
+.firebaserc
