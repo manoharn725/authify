@@ -1,17 +1,27 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "./pages/Home";
 import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
-import PageNotFound from "./pages/PageNotFound";
+import { lazy } from "react";
 import ProtectedRoutes from "./components/ProtectdRoutes";
+import ProtectedLayout from "./components/ProtectedLayout";
+import WithSuspense from "./hoc/WithSuspense";
+
+//Lazy Loading..
+const Home = lazy(() => import("./pages/Home"));
+const SignUp = lazy(() => import("./pages/SignUp"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
 export const router = createBrowserRouter([
   {
     element: <ProtectedRoutes />,
-    children : [
+    children: [
       {
-        path: "/",
-        element: <Home />,
+        element: <ProtectedLayout />,
+        children: [
+          {
+            path: "/",
+            element: WithSuspense(Home),
+          },
+        ],
       },
     ],
   },
@@ -21,10 +31,10 @@ export const router = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: <SignUp />,
+    element: WithSuspense(SignUp),
   },
   {
     path: "*",
-    element: <PageNotFound />,
+    element: WithSuspense(PageNotFound),
   },
 ]);
