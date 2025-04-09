@@ -1,21 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
-import Login from "./pages/Login";
 import { lazy } from "react";
-import ProtectedRoutes from "./components/ProtectdRoutes";
-import ProtectedLayout from "./components/ProtectedLayout";
 import WithSuspense from "./hoc/WithSuspense";
+import Login from "./pages/Login";
 
 //Lazy Loading..
 const Home = lazy(() => import("./pages/Home"));
 const SignUp = lazy(() => import("./pages/SignUp"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound"));
+const ProtectdRoutes = lazy(()=> import('./components/ProtectdRoutes'));
+const ProtectedLayout = lazy(()=> import('./components/ProtectedLayout'));
 
 export const router = createBrowserRouter([
   {
-    element: <ProtectedRoutes />,
+    element: WithSuspense(ProtectdRoutes),
     children: [
       {
-        element: <ProtectedLayout />,
+        element: WithSuspense(ProtectedLayout),
         children: [
           {
             path: "/",

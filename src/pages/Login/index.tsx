@@ -10,6 +10,7 @@ type InputTypes = {
   type: string;
   name: keyof UserLogin;
   placeholder: string;
+  isRequired: boolean;
 };
 const initialValue: UserLogin = {
   email: "",
@@ -23,8 +24,8 @@ const Login: React.FunctionComponent = () => {
   const navigate = useNavigate();
 
   const inputTypes: InputTypes[] = [
-    { id: 2, type: "email", name: "email", placeholder: "Email" },
-    { id: 3, type: "password", name: "password", placeholder: "Password" },
+    { id: 2, type: "email", name: "email", placeholder: "Email", isRequired:true, },
+    { id: 3, type: "password", name: "password", placeholder: "Password", isRequired:true, },
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +55,7 @@ const Login: React.FunctionComponent = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-gray-100">
+    <section className="min-h-[calc(100vh)] flex items-center justify-center bg-amber-50">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-md p-6 bg-white shadow-md rounded-lg"
@@ -63,7 +64,7 @@ const Login: React.FunctionComponent = () => {
           Login
         </h2>
 
-        {inputTypes.map(({ id, type, name, placeholder }) => (
+        {inputTypes.map(({ id, type, name, placeholder, isRequired }) => (
           <div key={id} className="mb-4">
             <label
               htmlFor={name}
@@ -78,6 +79,7 @@ const Login: React.FunctionComponent = () => {
               value={userLoginInfo[name]}
               onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required={isRequired}
             />
           </div>
         ))}
@@ -98,7 +100,7 @@ const Login: React.FunctionComponent = () => {
           </Link>
         </p>
       </form>
-    </div>
+    </section>
   );
 };
 

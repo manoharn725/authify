@@ -10,6 +10,7 @@ type InputTypes = {
   type: string;
   name: keyof UserSignIn;
   placeholder: string;
+  isRequired: boolean;
 };
 const initialValue: UserSignIn = {
   userName: "",
@@ -24,14 +25,15 @@ const SignUp: React.FunctionComponent = () => {
   const navigate = useNavigate();
 
   const inputTypes: InputTypes[] = [
-    { id: 1, type: "text", name: "userName", placeholder: "User Name" },
-    { id: 2, type: "email", name: "email", placeholder: "Email" },
-    { id: 3, type: "password", name: "password", placeholder: "Password" },
+    { id: 1, type: "text", name: "userName", placeholder: "User Name", isRequired:true },
+    { id: 2, type: "email", name: "email", placeholder: "Email", isRequired:true },
+    { id: 3, type: "password", name: "password", placeholder: "Password", isRequired:true },
     {
       id: 4,
       type: "text",
       name: "confirmPassword",
       placeholder: "Confirm Password",
+      isRequired:true
     },
   ];
 
@@ -62,7 +64,7 @@ const SignUp: React.FunctionComponent = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-amber-50">
+    <section className="min-h-[calc(100vh)] flex items-center justify-center bg-amber-50">
     <form
       onSubmit={handleSubmit}
       className="w-full max-w-md p-6 bg-white shadow-md rounded-lg"
@@ -71,7 +73,7 @@ const SignUp: React.FunctionComponent = () => {
         Sign Up
       </h2>
   
-      {inputTypes.map(({ id, type, name, placeholder }) => (
+      {inputTypes.map(({ id, type, name, placeholder, isRequired }) => (
         <div key={id} className="mb-4">
           <label
             htmlFor={name}
@@ -86,6 +88,7 @@ const SignUp: React.FunctionComponent = () => {
             value={userInfo[name]}
             onChange={handleChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required={isRequired}
           />
         </div>
       ))}
@@ -102,7 +105,7 @@ const SignUp: React.FunctionComponent = () => {
         </Link>
       </p>
     </form>
-  </div>
+  </section>
   
   );
 };
