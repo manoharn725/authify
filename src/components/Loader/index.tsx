@@ -1,10 +1,14 @@
 import Lottie from "lottie-react";
 import AutifyLoader from "../../assets/authifyLoader.json";
+import { useUserAuth } from "../../context/UserAuthContext";
 // interface ILoader{}
 
 const Loader: React.FunctionComponent = () => {
+    const {user} =useUserAuth();
   return (
-    <div className="min-h-[100dvh] flex items-center w-[300px] mx-auto">
+    <div className={`flex items-center w-[300px] mx-auto ${
+        user ? "h-[calc(100dvh-64px)]" : "h-[100dvh]"
+      }`}>
       <Lottie animationData={AutifyLoader} loop autoPlay />
     </div>
   );
