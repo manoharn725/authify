@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Login from "./pages/Login";
-import { lazy, Suspense } from "react";
-import Loader from "./components/Loader";
+import { lazy } from "react";
 import ProtectedRoutes from "./components/ProtectdRoutes";
 import ProtectedLayout from "./components/ProtectedLayout";
+import WithSuspense from "./hoc/WithSuspense";
 
 //Lazy Loading..
 const Home = lazy(() => import("./pages/Home"));
@@ -19,11 +19,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "/",
-            element: (
-              <Suspense fallback={<Loader />}>
-                <Home />
-              </Suspense>
-            ),
+            element: WithSuspense(Home),
           },
         ],
       },
@@ -35,18 +31,10 @@ export const router = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: (
-      <Suspense fallback={<Loader />}>
-        <SignUp />
-      </Suspense>
-    ),
+    element: WithSuspense(SignUp),
   },
   {
     path: "*",
-    element: (
-      <Suspense fallback={<Loader />}>
-        <PageNotFound />
-      </Suspense>
-    ),
+    element: WithSuspense(PageNotFound),
   },
 ]);
