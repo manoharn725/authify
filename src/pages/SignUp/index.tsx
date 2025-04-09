@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { FunctionComponent, useState } from "react";
 import { UserSignIn } from "../../types";
 import { useUserAuth } from "../../context/UserAuthContext";
 import { Link, useNavigate } from "react-router-dom";
@@ -18,7 +18,7 @@ const initialValue: UserSignIn = {
   password: "",
   confirmPassword: "",
 };
-const SignUp: React.FunctionComponent = () => {
+const SignUp: FunctionComponent = () => {
   const [userInfo, setUserInfo] = useState<UserSignIn>(initialValue);
 
   const { googleSignIn, signUp } = useUserAuth();
@@ -93,10 +93,10 @@ const SignUp: React.FunctionComponent = () => {
         </div>
       ))}
   
-      <Button type="submit" label="Sign Up" className="w-full" />
+      <Button type="submit" label="Sign Up" className="w-full text-white bg-rose-600 hover:bg-rose-700" />
 
 
-      <Button onClick={handleGoogleSignIn} type="button" label="Google SignIn" className="w-full bg-red-500 hover:bg-red-600" />
+      <Button isGoogle={true} onClick={handleGoogleSignIn} type="button" label="Google SignIn" className="w-full bg-white hover:bg-gray-100 text-gray-700" />
   
       <p className="text-sm text-center">
         Already have an account?{" "}

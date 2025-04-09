@@ -1,6 +1,7 @@
+import { FunctionComponent } from "react";
 // interface IHomeProps {}<IHomeProps>
 
-const Home: React.FunctionComponent = () => {
+const Home: FunctionComponent = () => {
   return (
     <section className="h-[calc(100%-64px)] flex flex-col items-center justify-center bg-gray-100 px-4">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full text-center">

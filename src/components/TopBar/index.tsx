@@ -1,9 +1,10 @@
+import { FunctionComponent } from "react";
 import { useUserAuth } from "../../context/UserAuthContext";
 import { useNavigate } from "react-router-dom";
 import Button from "../Button";
 // interface ITopBar {}
 
-const TopBar: React.FunctionComponent = () => {
+const TopBar: FunctionComponent = () => {
   const { logOut } = useUserAuth();
   const navigate = useNavigate();
 
@@ -23,6 +24,7 @@ const TopBar: React.FunctionComponent = () => {
         label="Log Out"
         type="button"
         className="mb-[unset]"
+        isTeritary={true}
       />
     </header>
   );

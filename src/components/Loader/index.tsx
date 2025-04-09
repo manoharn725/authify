@@ -1,9 +1,10 @@
+import { FunctionComponent } from "react";
 import Lottie from "lottie-react";
 import AutifyLoader from "../../assets/authifyLoader.json";
 import { useUserAuth } from "../../context/UserAuthContext";
 // interface ILoader{}
 
-const Loader: React.FunctionComponent = () => {
+const Loader: FunctionComponent = () => {
     const {user} =useUserAuth();
   return (
     <div className={`flex items-center w-[300px] mx-auto ${
