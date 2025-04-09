@@ -6,7 +6,7 @@ import TopBar from "../TopBar";
 const ProtectedLayout: React.FunctionComponent = () => {
   return (
     <>
-      <main className="px-4">
+      <main className="h-[100dvh]">
         <TopBar />
         <Outlet />
       </main>
