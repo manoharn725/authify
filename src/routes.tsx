@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
 import WithSuspense from "./hoc/WithSuspense";
-import Login from "./pages/auth/Login";
+import Login from "./pages/Auth/Login";
 
 //Lazy Loading..
 const Home = lazy(() => import("./pages/Home"));
-const SignUp = lazy(() => import("./pages/auth/SignUp"));
+const SignUp = lazy(() => import("./pages/Auth/SignUp"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 const ProtectdRoutes = lazy(()=> import('./components/ProtectdRoutes'));
 const ProtectedLayout = lazy(()=> import('./components/ProtectedLayout'));
