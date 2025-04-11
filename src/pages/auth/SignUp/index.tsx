@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import { ChangeEvent, FunctionComponent, MouseEvent, useState } from "react";
 import { UserSignIn } from "../../../types";
 import { useUserAuth } from "../../../context/UserAuthContext";
 import { Link, useNavigate } from "react-router-dom";
@@ -37,12 +37,12 @@ const SignUp: FunctionComponent = () => {
     },
   ];
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserInfo((prev) => ({ ...prev, [name as keyof UserSignIn]: value }));
   };
 
-  const handleSubmit = async (e: React.MouseEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       await signUp(userInfo.email, userInfo.password);
@@ -53,7 +53,7 @@ const SignUp: FunctionComponent = () => {
     }
   };
 
-  const handleGoogleSignIn = async (e: React.MouseEvent<HTMLElement>) => {
+  const handleGoogleSignIn = async (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
     try {
       await googleSignIn();
@@ -73,7 +73,7 @@ const SignUp: FunctionComponent = () => {
         Sign Up
       </h2>
   
-      {inputTypes.map(({ id, type, name, placeholder, isRequired }) => (
+      {inputTypes.map(({ id, type, name, placeholder='', isRequired=false }) => (
         <div key={id} className="mb-4">
           <label
             htmlFor={name}

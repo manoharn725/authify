@@ -1,9 +1,9 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, MouseEvent } from "react";
 import GoogleIcon from "../../assets/googleIcon.svg";
 
 interface IButton {
   label: string;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   type?: "button" | "submit" | "reset";
   className?: string;
   disabled?: boolean;
