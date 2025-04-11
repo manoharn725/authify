@@ -1,8 +1,8 @@
 import { FunctionComponent, useState } from "react";
-import { UserSignIn } from "../../types";
-import { useUserAuth } from "../../context/UserAuthContext";
+import { UserSignIn } from "../../../types";
+import { useUserAuth } from "../../../context/UserAuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import Button from "../../components/Button";
+import Button from "../../../components/Button";
 
 // interface ISignUpProps {} <ISignUpProps>
 type InputTypes = {

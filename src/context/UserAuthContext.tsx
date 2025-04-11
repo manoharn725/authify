@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, FunctionComponent, useContext, useEffect, useState } from "react";
 import { auth } from "../firebaseConfig";
 import {
   GoogleAuthProvider,
@@ -47,7 +47,7 @@ const UserAuthContext = createContext<AuthContextData>({
   googleSignIn,
 });
 
-const UserAuthProvider: React.FunctionComponent<IUserAuthProviderProps> = ({
+const UserAuthProvider: FunctionComponent<IUserAuthProviderProps> = ({
   children,
 }) => {
   const [user, setUser] = useState<User | null>(null);
