@@ -10,8 +10,9 @@ const TopBar: FunctionComponent = () => {
 
   const handleLogout = async () => {
     try {
-      await logOut();
-      navigate("/login");
+      await logOut(()=>{
+        navigate("/login");
+      });
     } catch (error) {
       console.log(error);
     }

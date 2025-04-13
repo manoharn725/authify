@@ -31,7 +31,7 @@ const Button: FunctionComponent<IButton> = ({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`flex justify-center items-center gap-2.5 px-4 py-2 rounded-md transition duration-200 mb-3 disabled:opacity-50 border border-gray-300 cursor-pointer ${
+      className={`flex justify-center items-center gap-2.5 px-4 py-2 rounded-md transition duration-200 mb-2 disabled:opacity-50 border border-gray-300 cursor-pointer text-sm sm:text-base ${
         isPrimary
           ? "bg-white hover:bg-gray-100 text-gray-700"
           : isSecondary
