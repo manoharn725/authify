@@ -122,7 +122,7 @@ const SignUp: FunctionComponent = () => {
           )
         )}
 
-        <Button type="submit" label="Sign Up" isSecondary isFullWidth />
+        <Button type="submit" label="Sign Up" isSignupIcon isSecondary isFullWidth />
         <div className="flex items-center justify-center gap-2.5 mb-2 text-gray-400">
           <hr className="w-30" />
           or

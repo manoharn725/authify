@@ -1,5 +1,8 @@
 import { FunctionComponent, MouseEvent } from "react";
 import GoogleIcon from "../../assets/googleIcon.svg";
+import LoginIcon from "../../assets/loginIcon.svg";
+import SignupIcon from '../../assets/signupIcon.svg';
+import LogoutIcon from '../../assets/logoutIcon.svg';
 
 interface IButton {
   label: string;
@@ -8,10 +11,14 @@ interface IButton {
   className?: string;
   disabled?: boolean;
   isGoogle?: boolean;
+  isLoginIcon?: boolean;
+  isSignupIcon?: boolean;
+  isLogoutIcon?: boolean;
   isPrimary?: boolean;
   isSecondary?: boolean;
   isTeritary?: boolean;
   isFullWidth?: boolean;
+  isLoading?: boolean;
 }
 
 const Button: FunctionComponent<IButton> = ({
@@ -21,10 +28,14 @@ const Button: FunctionComponent<IButton> = ({
   className = "",
   disabled = false,
   isGoogle = false,
+  isLoginIcon = false,
+  isSignupIcon = false,
+  isLogoutIcon = false,
   isPrimary = false,
   isSecondary = false,
   isTeritary = false,
-  isFullWidth= false,
+  isFullWidth = false,
+  isLoading = false,
 }) => {
   return (
     <button
@@ -39,9 +50,51 @@ const Button: FunctionComponent<IButton> = ({
           : isTeritary
           ? "bg-indigo-600 hover:bg-indigo-700 text-white"
           : ""
-      } ${isFullWidth ? 'w-full' : ''}  ${className}`}
+      } ${isFullWidth ? "w-full" : ""}  ${className}`}
     >
-      {isGoogle && <img src={GoogleIcon} alt="Google Icon" className="w-4" />}{" "}
+      {isLoading ? (
+        <span
+          className={`w-4 h-4 mr-1 border-2 ${
+            isPrimary
+              ? "border-gray-700"
+              : isSecondary
+              ? "border-white"
+              : isTeritary
+              ? '"border-white'
+              : ""
+          } border-t-transparent rounded-full animate-spin`}
+        ></span>
+      ) : (
+        ""
+      )}
+    {(isGoogle || isLoginIcon || isSignupIcon || isLogoutIcon) && (
+  <img
+    src={
+      isGoogle
+        ? GoogleIcon
+        : isLoginIcon
+        ? LoginIcon
+        : isSignupIcon
+        ? SignupIcon
+        : isLogoutIcon
+        ? LogoutIcon
+        : ""
+    }
+    alt={
+      isGoogle
+        ? "Google Icon"
+        : isLoginIcon
+        ? "Login Icon"
+        : isSignupIcon
+        ? "Signup Icon"
+        : isLogoutIcon
+        ? "Logout Icon"
+        : ""
+    }
+    className="w-4"
+  />
+)}
+
       {label}
     </button>
   );

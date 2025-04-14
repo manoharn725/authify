@@ -26,6 +26,7 @@ const TopBar: FunctionComponent = () => {
         type="button"
         className="mb-[unset]"
         isTeritary={true}
+        isLogoutIcon
       />
     </header>
   );
