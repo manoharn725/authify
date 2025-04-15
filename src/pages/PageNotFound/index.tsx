@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import Button from "../../components/Button";
+import Button from "../../components/ui/Button";
 import { useNavigate } from "react-router-dom";
 import PandaSleeping from "../../assets/pandaSleeping.json";
 import Lottie from "lottie-react";

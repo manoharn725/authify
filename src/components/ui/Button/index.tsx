@@ -1,8 +1,8 @@
-import { FunctionComponent, MouseEvent } from "react";
-import GoogleIcon from "../../assets/googleIcon.svg";
-import LoginIcon from "../../assets/loginIcon.svg";
-import SignupIcon from '../../assets/signupIcon.svg';
-import LogoutIcon from '../../assets/logoutIcon.svg';
+import { FunctionComponent, MouseEvent, memo } from "react";
+import GoogleIcon from "../../../assets/googleIcon.svg";
+import LoginIcon from "../../../assets/loginIcon.svg";
+import SignupIcon from "../../../assets/signupIcon.svg";
+import LogoutIcon from "../../../assets/logoutIcon.svg";
 
 interface IButton {
   label: string;
@@ -60,44 +60,43 @@ const Button: FunctionComponent<IButton> = ({
               : isSecondary
               ? "border-white"
               : isTeritary
-              ? '"border-white'
+              ? "border-white"
               : ""
           } border-t-transparent rounded-full animate-spin`}
         ></span>
       ) : (
         ""
       )}
-    {(isGoogle || isLoginIcon || isSignupIcon || isLogoutIcon) && (
-  <img
-    src={
-      isGoogle
-        ? GoogleIcon
-        : isLoginIcon
-        ? LoginIcon
-        : isSignupIcon
-        ? SignupIcon
-        : isLogoutIcon
-        ? LogoutIcon
-        : ""
-    }
-    alt={
-      isGoogle
-        ? "Google Icon"
-        : isLoginIcon
-        ? "Login Icon"
-        : isSignupIcon
-        ? "Signup Icon"
-        : isLogoutIcon
-        ? "Logout Icon"
-        : ""
-    }
-    className="w-4"
-  />
-)}
-
+      {(isGoogle || isLoginIcon || isSignupIcon || isLogoutIcon) && (
+        <img
+          src={
+            isGoogle
+              ? GoogleIcon
+              : isLoginIcon
+              ? LoginIcon
+              : isSignupIcon
+              ? SignupIcon
+              : isLogoutIcon
+              ? LogoutIcon
+              : ""
+          }
+          alt={
+            isGoogle
+              ? "Google Icon"
+              : isLoginIcon
+              ? "Login Icon"
+              : isSignupIcon
+              ? "Signup Icon"
+              : isLogoutIcon
+              ? "Logout Icon"
+              : ""
+          }
+          className="w-4"
+        />
+      )}
       {label}
     </button>
   );
 };
 
-export default Button;
+export default memo(Button);
