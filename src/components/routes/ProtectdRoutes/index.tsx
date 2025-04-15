@@ -1,16 +1,22 @@
+import { FunctionComponent } from "react";
 import { Navigate, useLocation, Outlet } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
+import Loader from "../../feedback/Loader";
 
 // interface IProtectedRoutesProps {}<IProtectedRoutesProps>
 
-const ProtectedRoutes: React.FunctionComponent = () => {
+const ProtectedRoutes: FunctionComponent = () => {
   const auth = getAuth();
   const [user, loading] = useAuthState(auth);
   const location = useLocation();
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   }
 
   return user ? (
