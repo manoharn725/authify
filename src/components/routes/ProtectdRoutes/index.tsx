@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import { Navigate, useLocation, Outlet } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
-import Loader from "../Loader";
+import Loader from "../../feedback/Loader";
 
 // interface IProtectedRoutesProps {}<IProtectedRoutesProps>
 

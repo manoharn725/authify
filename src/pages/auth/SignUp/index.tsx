@@ -2,7 +2,8 @@ import { ChangeEvent, FunctionComponent, MouseEvent, useState } from "react";
 import { UserSignIn } from "../../../types";
 import { useUserAuth } from "../../../context/UserAuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import Button from "../../../components/Button";
+import Button from "../../../components/ui/Button";
+import ControlledInput from "../../../components/form/ControlledInput";
 
 // interface ISignUpProps {} <ISignUpProps>
 type InputTypes = {
@@ -10,6 +11,7 @@ type InputTypes = {
   type: string;
   name: keyof UserSignIn;
   placeholder: string;
+  label:string;
   isRequired: boolean;
 };
 const initialValue: UserSignIn = {
@@ -19,7 +21,7 @@ const initialValue: UserSignIn = {
   confirmPassword: "",
 };
 const SignUp: FunctionComponent = () => {
-  const [userInfo, setUserInfo] = useState<UserSignIn>(initialValue);
+  const [userSignupInfo, setUserSignupInfo] = useState<UserSignIn>(initialValue);
 
   const { googleSignIn, signUp } = useUserAuth();
   const navigate = useNavigate();
@@ -30,6 +32,7 @@ const SignUp: FunctionComponent = () => {
       type: "text",
       name: "userName",
       placeholder: "User Name",
+      label:"User Name",
       isRequired: true,
     },
     {
@@ -37,6 +40,7 @@ const SignUp: FunctionComponent = () => {
       type: "email",
       name: "email",
       placeholder: "Email",
+      label: "Email",
       isRequired: true,
     },
     {
@@ -44,6 +48,7 @@ const SignUp: FunctionComponent = () => {
       type: "password",
       name: "password",
       placeholder: "Password",
+      label: "Password",
       isRequired: true,
     },
     {
@@ -51,20 +56,21 @@ const SignUp: FunctionComponent = () => {
       type: "text",
       name: "confirmPassword",
       placeholder: "Confirm Password",
+      label: "Confirm Password",
       isRequired: true,
     },
   ];
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setUserInfo((prev) => ({ ...prev, [name as keyof UserSignIn]: value }));
+    setUserSignupInfo((prev) => ({ ...prev, [name as keyof UserSignIn]: value }));
   };
 
   const handleSubmit = async (e: MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await signUp(userInfo.email, userInfo.password);
-      setUserInfo(initialValue);
+      await signUp(userSignupInfo.email, userSignupInfo.password);
+      setUserSignupInfo(initialValue);
       navigate("/login");
     } catch (error) {
       console.log(error);
@@ -101,24 +107,17 @@ const SignUp: FunctionComponent = () => {
         </h2>
 
         {inputTypes.map(
-          ({ id, type, name, placeholder = "", isRequired = false }) => (
-            <div key={id} className="mb-3 sm:mb-4">
-              <label
-                htmlFor={name}
-                className="text-left block text-[12px] sm:text-sm font-medium text-gray-700 mb-1"
-              >
-                {placeholder}:
-              </label>
-              <input
-                type={type}
-                name={name}
-                placeholder={placeholder}
-                value={userInfo[name]}
-                onChange={handleChange}
-                className="w-full text-[12px] sm:text-sm px-2 md:px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                required={isRequired}
-              />
-            </div>
+          ({ id, type, name, placeholder = "", label,isRequired = false }) => (
+            <ControlledInput
+            key={id}
+            type={type}
+            name={name}
+            value={userSignupInfo[name]}
+            placeholder={placeholder}
+            label={label}
+            isRequired={isRequired}
+            onChange={handleChange}
+          />
           )
         )}
 

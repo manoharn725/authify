@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import Lottie from "lottie-react";
-import AutifyLoader from "../../assets/authifyLoader.json";
-import { useUserAuth } from "../../context/UserAuthContext";
+import AutifyLoader from "../../../assets/authifyLoader.json";
+import { useUserAuth } from "../../../context/UserAuthContext";
 // interface ILoader{}
 
 const Loader: FunctionComponent = () => {

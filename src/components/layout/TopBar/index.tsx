@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
-import { useUserAuth } from "../../context/UserAuthContext";
+import { useUserAuth } from "../../../context/UserAuthContext";
 import { useNavigate } from "react-router-dom";
-import Button from "../Button";
+import Button from "../../ui/Button";
 // interface ITopBar {}
 
 const TopBar: FunctionComponent = () => {
