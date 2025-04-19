@@ -9,7 +9,7 @@ interface IButton {
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   type?: "button" | "submit" | "reset";
   className?: string;
-  disabled?: boolean;
+  isDisabled?: boolean;
   isGoogle?: boolean;
   isLoginIcon?: boolean;
   isSignupIcon?: boolean;
@@ -26,7 +26,7 @@ const Button: FunctionComponent<IButton> = ({
   onClick,
   type = "button",
   className = "",
-  disabled = false,
+  isDisabled = false,
   isGoogle = false,
   isLoginIcon = false,
   isSignupIcon = false,
@@ -41,7 +41,7 @@ const Button: FunctionComponent<IButton> = ({
     <button
       type={type}
       onClick={onClick}
-      disabled={disabled}
+      disabled={isDisabled}
       className={`flex justify-center items-center gap-2.5 px-4 py-2 rounded-md transition duration-200 mb-2 disabled:opacity-50 border border-gray-300 cursor-pointer text-sm sm:text-base ${
         isPrimary
           ? "bg-white hover:bg-gray-100 text-gray-700"
@@ -54,7 +54,7 @@ const Button: FunctionComponent<IButton> = ({
     >
       {isLoading ? (
         <span
-          className={`w-4 h-4 mr-1 border-2 ${
+          className={`w-4 h-4 border-2 ${
             isPrimary
               ? "border-gray-700"
               : isSecondary
@@ -64,10 +64,7 @@ const Button: FunctionComponent<IButton> = ({
               : ""
           } border-t-transparent rounded-full animate-spin`}
         ></span>
-      ) : (
-        ""
-      )}
-      {(isGoogle || isLoginIcon || isSignupIcon || isLogoutIcon) && (
+      ) : (isGoogle || isLoginIcon || isSignupIcon || isLogoutIcon) && (
         <img
           src={
             isGoogle
