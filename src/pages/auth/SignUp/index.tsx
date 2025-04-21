@@ -135,6 +135,7 @@ const SignUp: FunctionComponent = () => {
             label={label}
             isRequired={isRequired}
             onChange={handleChange}
+            isPasswordStrength
           />
           )
         )}

@@ -1,6 +1,11 @@
 import { ChangeEvent, FunctionComponent, memo, useState } from "react";
 import EyePasswordShow from "../../../assets/eye-password-show.svg";
 import EyePasswordHide from "../../../assets/eye-password-hide.svg";
+import {
+  passwordRules,
+  getPasswordStrength,
+  PasswordRuleKey,
+} from "../../../utils/passwordStrengthUtils";
 
 interface IControlledInput {
   type: string;
@@ -10,6 +15,7 @@ interface IControlledInput {
   label: string;
   isRequired: boolean;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  isPasswordStrength?: boolean;
 }
 
 const ControlledInput: FunctionComponent<IControlledInput> = ({
@@ -20,9 +26,13 @@ const ControlledInput: FunctionComponent<IControlledInput> = ({
   label,
   isRequired,
   onChange,
+  isPasswordStrength = false,
 }) => {
   const [isShowPassword, setIsShowPassword] = useState(false);
   const isPassword = type === "password";
+
+  // Password Strength logic
+  const { rules, strengthLabel } = getPasswordStrength(value);
 
   const handleShowPassword = () => {
     if (value.length > 0) {
@@ -57,6 +67,39 @@ const ControlledInput: FunctionComponent<IControlledInput> = ({
           className="absolute sm:top-9 top-8 right-3 font-light w-4 cursor-pointer"
           alt="Toggle Password Visibility"
         />
+      )}
+
+      {/* Display Password Strength */}
+      {isPasswordStrength && value.length > 0 && isPassword && (
+        <div className="mt-2 flex justify-between">
+          {isPasswordStrength && value.length > 0 && (
+            <div className="text-sm text-red-500">
+              {
+                Object.entries(passwordRules)
+                  .map(([key, rule]) => {
+                    const isRulePassed = rules.includes(key as PasswordRuleKey);
+                    if (!isRulePassed) {
+                      return <span key={key}>{rule.label}</span>; // Only first failing rule
+                    }
+                    return null;
+                  })
+                  .filter(Boolean)[0]
+              }
+            </div>
+          )}
+
+          <span
+            className={`text-sm text-gray-600 ${
+              strengthLabel === "Weak"
+                ? "text-red-500"
+                : strengthLabel === "Good"
+                ? "text-yellow-500"
+                : "text-green-500"
+            }`}
+          >
+            {strengthLabel}
+          </span>
+        </div>
       )}
     </div>
   );
