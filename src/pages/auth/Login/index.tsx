@@ -55,7 +55,7 @@ const Login: FunctionComponent = () => {
     try {
       await logIn(userLoginInfo.email, userLoginInfo.password);
       setUserLoginInfo(initialValue);
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       console.log(error);
     }
@@ -65,7 +65,7 @@ const Login: FunctionComponent = () => {
     e.preventDefault();
     try {
       await googleSignIn();
-      await navigate("/");
+      await navigate("/home");
     } catch (error) {
       console.log("Error:", error);
     }

@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
         element: <LazyProtectedLayout />,
         children: [
           {
-            path: "/",
+            path: "/home",
             element: <LazyHome />,
           },
         ],
