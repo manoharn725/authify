@@ -55,7 +55,7 @@ const Login: FunctionComponent = () => {
     try {
       await logIn(userLoginInfo.email, userLoginInfo.password);
       setUserLoginInfo(initialValue);
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       console.log(error);
     }
@@ -65,14 +65,14 @@ const Login: FunctionComponent = () => {
     e.preventDefault();
     try {
       await googleSignIn();
-      await navigate("/");
+      await navigate("/home");
     } catch (error) {
       console.log("Error:", error);
     }
   };
 
   return (
-    <section className="min-h-[calc(100vh)] flex items-center justify-center bg-amber-50">
+    <section className="min-h-[calc(100dvh)] flex items-center justify-center bg-amber-50">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-md sm:p-6 p-4 bg-white shadow-md rounded-lg"

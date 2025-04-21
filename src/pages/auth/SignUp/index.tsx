@@ -12,7 +12,7 @@ type InputTypes = {
   name: keyof UserSignIn;
   placeholder: string;
   label:string;
-  isRequired: boolean;
+  isRequired?: boolean;
 };
 const initialValue: UserSignIn = {
   userName: "",
@@ -53,7 +53,7 @@ const SignUp: FunctionComponent = () => {
     },
     {
       id: 4,
-      type: "text",
+      type: "password",
       name: "confirmPassword",
       placeholder: "Confirm Password",
       label: "Confirm Password",
@@ -68,8 +68,26 @@ const SignUp: FunctionComponent = () => {
 
   const handleSubmit = async (e: MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const {userName, email, password, confirmPassword} = userSignupInfo;
+
+    // validation
+    if(!userName || !email || !password || !confirmPassword){
+      alert('Please fill all the fields');
+      return;
+    }
+
+    if(password.length < 6){
+      alert('Password must have atleast 6 characters long.')
+      return;
+    }
+
+    if(password !== confirmPassword){
+      alert('password do not match.');
+      return;
+    }
+
     try {
-      await signUp(userSignupInfo.email, userSignupInfo.password);
+      await signUp(email, password);
       setUserSignupInfo(initialValue);
       navigate("/login");
     } catch (error) {
@@ -88,7 +106,7 @@ const SignUp: FunctionComponent = () => {
   };
 
   return (
-    <section className="min-h-[calc(100vh)] flex items-center justify-center bg-amber-50">
+    <section className="min-h-[calc(100dvh)] flex items-center justify-center bg-amber-50">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-md sm:p-6 p-4 bg-white shadow-md rounded-lg"
@@ -117,6 +135,7 @@ const SignUp: FunctionComponent = () => {
             label={label}
             isRequired={isRequired}
             onChange={handleChange}
+            isPasswordStrength
           />
           )
         )}
