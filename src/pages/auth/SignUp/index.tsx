@@ -106,10 +106,10 @@ const SignUp: FunctionComponent = () => {
   };
 
   return (
-    <section className="min-h-[calc(100dvh)] flex items-center justify-center bg-amber-50">
+    <section className="min-h-dvh flex items-center justify-center bg-amber-50">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md sm:p-6 p-4 bg-white shadow-md rounded-lg"
+        className="w-full max-w-md sm:p-6 p-4 bg-white shadow-md rounded-lg sm:min-h-auto min-h-dvh content-center"
       >
         <div className="text-center text-gray-500 mb-2 sm:mb-4">
           <h1 className="text-xl sm:text-2xl font-bold text-gray-800">

@@ -73,7 +73,7 @@ const ControlledInput: FunctionComponent<IControlledInput> = ({
       {isPasswordStrength && value.length > 0 && isPassword && (
         <div className="mt-2 flex justify-between">
           {isPasswordStrength && value.length > 0 && (
-            <div className="text-sm text-red-500">
+            <div className="text-[12px] sm:text-sm text-red-500">
               {
                 Object.entries(passwordRules)
                   .map(([key, rule]) => {
@@ -89,7 +89,7 @@ const ControlledInput: FunctionComponent<IControlledInput> = ({
           )}
 
           <span
-            className={`text-sm text-gray-600 ${
+            className={`text-[12px] sm:text-sm text-gray-600 ${
               strengthLabel === "Weak"
                 ? "text-red-500"
                 : strengthLabel === "Good"
