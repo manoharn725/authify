@@ -140,7 +140,7 @@ const SignUp: FunctionComponent = () => {
           )
         )}
 
-        <Button type="submit" label="Sign Up" isSignupIcon isSecondary isFullWidth />
+        <Button type="submit" label="Sign Up" isSignupIcon isSecondary isFullWidth  className="mb-2" />
         <div className="flex items-center justify-center gap-2.5 mb-2 text-gray-400">
           <hr className="w-30" />
           or
@@ -154,6 +154,7 @@ const SignUp: FunctionComponent = () => {
           isPrimary
           isFullWidth={true}
           isGoogle={true}
+           className="mb-2"
         />
 
         <p className="text-[12px] sm:text-sm text-center mt-3">

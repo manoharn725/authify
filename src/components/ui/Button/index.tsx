@@ -5,7 +5,7 @@ import SignupIcon from "../../../assets/signupIcon.svg";
 import LogoutIcon from "../../../assets/logoutIcon.svg";
 
 interface IButton {
-  label: string;
+  label?: string;
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   type?: "button" | "submit" | "reset";
   className?: string;
@@ -19,6 +19,7 @@ interface IButton {
   isTeritary?: boolean;
   isFullWidth?: boolean;
   isLoading?: boolean;
+  isDark?:string;
 }
 
 const Button: FunctionComponent<IButton> = ({
@@ -36,13 +37,14 @@ const Button: FunctionComponent<IButton> = ({
   isTeritary = false,
   isFullWidth = false,
   isLoading = false,
+  isDark = 'light',
 }) => {
   return (
     <button
       type={type}
       onClick={onClick}
       disabled={isDisabled}
-      className={`flex justify-center items-center gap-2.5 px-4 py-2 rounded-md transition duration-200 mb-2 disabled:opacity-50 border border-gray-300 cursor-pointer text-sm sm:text-base ${
+      className={`flex justify-center items-center gap-2.5 px-4 py-2 rounded-md transition duration-200 disabled:opacity-50 border border-gray-300 cursor-pointer text-sm sm:text-base ${
         isPrimary
           ? "bg-white hover:bg-gray-100 text-gray-700"
           : isSecondary
@@ -91,7 +93,7 @@ const Button: FunctionComponent<IButton> = ({
           className="w-4"
         />
       )}
-      {label}
+      {label ? label : isDark === 'dark' ? '🌛' :'🌞'} 
     </button>
   );
 };
