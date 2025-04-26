@@ -6,7 +6,7 @@ import useLocalStorage from "../../../hooks/useLocalStorage/index.ts";
 // interface ITopBar {}
 
 const TopBar: FunctionComponent = () => {
-  const [storedValue, setStoredValue] = useLocalStorage("theme", "light");
+  const [theme, setTheme] = useLocalStorage({key:'theme', initialValue:'light'});
 
   const { logOut } = useUserAuth();
   const navigate = useNavigate();
@@ -22,14 +22,14 @@ const TopBar: FunctionComponent = () => {
   };
 
   const handleTheme = () => {
-    setStoredValue(storedValue === "light" ? "dark" : "light");
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   return (
-    <header className="h-16 px-2.5 sm:px-5 w-full bg-amber-200 flex justify-between items-center">
-      <div>Authify</div>
+    <header className="h-16 px-2.5 sm:px-5 w-full bg-amber-400 dark:bg-gray-900 flex justify-between items-center">
+      <div className="text-black dark:text-white">Authify</div>
       <div className="flex gap-4 items-center justify-center">
-        <Button isDark={storedValue} isTeritary onClick={handleTheme} />
+        <Button isDark={theme} isTeritary onClick={handleTheme} />
         <Button
           onClick={handleLogout}
           label="Log Out"
