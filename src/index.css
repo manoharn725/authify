@@ -2,106 +2,126 @@
 /* @custom-variant dark (&:where(.dark, .dark *)); */
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-[data-theme='light'] {
-    /* Primary brand colors */
-    --color-primary: #2563EB;
-    --color-primary-light: #60A5FA;
-    --color-primary-dark: #1D4ED8;
-  
-    /* Backgrounds */
-    --color-bg: #F8FAFC;                      /* main background */
-    --color-topbar: #FFFFFF;                  /* topbar */
-    --color-form-bg: #FFFFFF;                 /* form background */
-    --color-card-bg: #FFFFFF;                 /* card background */
-  
-    /* Buttons */
-    --color-button-form: #2563EB;             /* login/signup button */
-    --color-button-google: #FFFFFF;           /* Google signin button */
-    --color-button-google-border: #CBD5E1;
-  
-    /* Text */
-    --color-text: #0F172A;                    /* primary text */
-    --color-muted: #64748B;                   /* secondary text */
+[data-theme="light"] {
+  /* Primary brand colors */
+  --color-primary: #2563eb;
+  --color-primary-light: #60a5fa;
+  --color-primary-dark: #1d4ed8;
+
+  /* Backgrounds */
+  --color-bg: #f8fafc; /* main background */
+  --color-topbar: #ffffff; /* topbar */
+  --color-form-bg: #ffffff; /* form background */
+  --color-card-bg: #ffffff; /* card background */
+
+  /* Buttons */
+  --color-button-form: #2563eb; /* login/signup button */
+  --color-button-google: #ffffff; /* Google signin button */
+  --color-button-google-border: #cbd5e1;
+
+  /* Text */
+  --color-text: #0f172a; /* primary text */
+  --color-muted: #64748b; /* secondary text */
+}
+
+[data-theme="dark"] {
+  /* Primary brand colors */
+  --color-primary: #3b82f6;
+  --color-primary-light: #60a5fa;
+  --color-primary-dark: #1e40af;
+
+  /* Backgrounds */
+  --color-bg: #0f172a;
+  --color-topbar: #1e293b;
+  --color-form-bg: #1e293b;
+  --color-card-bg: #1e293b;
+
+  /* Buttons */
+  --color-button-form: #3b82f6;
+  --color-button-google: #1e293b;
+  --color-button-google-border: #334155;
+
+  /* Text */
+  --color-text: #f8fafc;
+  --color-muted: #94a3b8;
+}
+
+@layer utilities {
+  /* Backgrounds */
+  .bg-main {
+    background-color: var(--color-bg);
   }
-  
-  [data-theme='dark'] {
-    /* Primary brand colors */
-    --color-primary: #3B82F6;
-    --color-primary-light: #60A5FA;
-    --color-primary-dark: #1E40AF;
-  
-    /* Backgrounds */
-    --color-bg: #0F172A;
-    --color-topbar: #1E293B;
-    --color-form-bg: #1E293B;
-    --color-card-bg: #1E293B;
-  
-    /* Buttons */
-    --color-button-form: #3B82F6;
-    --color-button-google: #1E293B;
-    --color-button-google-border: #334155;
-  
-    /* Text */
-    --color-text: #F8FAFC;
-    --color-muted: #94A3B8;
+  .bg-topbar {
+    background-color: var(--color-topbar);
   }
-  
-  
-  
-  @layer utilities {
-    /* Backgrounds */
-    .bg-main {
-      background-color: var(--color-bg);
-    }
-    .bg-topbar {
-      background-color: var(--color-topbar);
-    }
-    .bg-form {
-      background-color: var(--color-form-bg);
-    }
-    .bg-card {
-      background-color: var(--color-card-bg);
-    }
-  
-    /* Text Colors */
-    .text-primary {
-      color: var(--color-text);
-    }
-    .text-secondary {
-      color: var(--color-muted);
-    }
-  
-    /* Form Buttons (Login / Signup) */
-    .button-form {
-      background-color: var(--color-button-form);
-      color: var(--color-text);
-      border: 2px solid var(--color-primary-dark);
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-    .button-form:hover {
-      background-color: var(--color-primary-dark);
-    }
-  
-    /* Google Sign-In Button */
-    .button-google {
-      background-color: var(--color-button-google);
-      color: var(--color-text);
-      border: 1px solid var(--color-button-google-border);
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: background-color 0.3s ease;
-    }
-    .button-google:hover {
-      background-color: var(--color-primary-light);
-      color: white;
-    }
+  .bg-form {
+    background-color: var(--color-form-bg);
   }
-  
-  
+  .bg-card {
+    background-color: var(--color-card-bg);
+  }
+
+  /* Text Colors */
+  .text-primary {
+    color: var(--color-text);
+  }
+  .text-secondary {
+    color: var(--color-muted);
+  }
+
+  /* Form Buttons (Login / Signup) */
+  .button-form {
+    background-color: var(--color-button-form);
+    color: var(--color-text);
+    border: 2px solid var(--color-primary-dark);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  .button-form:hover {
+    background-color: var(--color-primary-dark);
+  }
+
+  /* Google Sign-In Button */
+  .button-google {
+    background-color: var(--color-button-google);
+    color: var(--color-text);
+    border: 1px solid var(--color-button-google-border);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+  }
+  .button-google:hover {
+    background-color: var(--color-primary-light);
+    color: white;
+  }
+}
+
+@keyframes MoveTop {
+  0% {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.my-move-top {
+  animation: MoveTop 0.5s ease forwards;
+}
+
+/* inside your global CSS like index.css or tailwind.css */
+.scrollbar-none {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
