@@ -48,7 +48,7 @@ const Button: FunctionComponent<IButton> = ({
         isPrimary
           ? "bg-white hover:bg-gray-100 text-gray-700"
           : isSecondary
-          ? "bg-rose-600 hover:bg-rose-700 text-white"
+          ? "bg-rose-600 hover:bg-rose-700 text-white dark:bg-blue-600 dark:hover:bg-blue-700"
           : isTeritary
           ? "bg-indigo-600 hover:bg-indigo-700 text-white"
           : ""

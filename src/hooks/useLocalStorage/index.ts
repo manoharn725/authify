@@ -1,10 +1,21 @@
 import { useEffect, useState } from "react";
 
-const useLocalStorage = (
-  key: string = 'theme',
-  initialValue: string = 'light'
-): [string, (value: string) => void, () => void] => {
-    
+type UseLocalStorageProps = {
+  key?: string;
+  initialValue?: string;
+};
+
+type UseLocalStorageReturn = [
+  string,
+  (value: string) => void,
+  () => void,
+  () => void,
+];
+
+const useLocalStorage = ({
+  key = "theme",
+  initialValue = "light",
+}: UseLocalStorageProps): UseLocalStorageReturn => {
   const [storedValue, setStoredValue] = useState(() => {
     try {
       const item = localStorage.getItem(key);
@@ -19,10 +30,9 @@ const useLocalStorage = (
     try {
       localStorage.setItem(key, JSON.stringify(storedValue));
 
-      if (key === 'theme') {
-        document.documentElement.setAttribute('data-theme',storedValue);
-      } 
-      
+      if (key === "theme") {
+        document.documentElement.setAttribute("data-theme", storedValue);
+      }
     } catch (error) {
       console.log(`Error setLocalStorage: ${key}, ${error}`);
     }
@@ -36,7 +46,15 @@ const useLocalStorage = (
     }
   };
 
-  return [storedValue, setStoredValue, removeStoredValue];
+  const clearStoredValue = () => {
+    try {
+      localStorage.clear();
+    } catch (error) {
+      console.log(`Error clearLocalStorage: ${key}, ${error}`);
+    }
+  };
+
+  return [storedValue, setStoredValue, removeStoredValue, clearStoredValue];
 };
 
 export default useLocalStorage;

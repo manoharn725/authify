@@ -1,5 +1,5 @@
 import { ComponentType, Suspense } from "react";
-import Loader from "../../feedback/Loader";
+import Loader from "../../components/feedback/Loader";
 
 const WithSuspense = <P extends object>(WrappedComponent: ComponentType<P>) => {
   const ComponentWithSuspense = (props: P) => {
